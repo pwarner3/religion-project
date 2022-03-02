@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+  <!-- Parker Warner -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="/assets/Sidemenu.css">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>Religion Project</title> 
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/images/Plogo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">Parker Warner</span>
+                    <span class="profession">Religion Project</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/addItems">
+                            <i class='bx bx-plus icon'></i>
+                            <span class="text nav-text">Add Scriptures</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text">Home</div>
+        <div class="bomTable">
+
+            <!-- Added for Tables -->
+            <table class="table-content">
+                <thead>
+                    <tr>
+                        <th class="Delete">Delete</th>
+                        <th>#</th>
+                        <th>
+                            <div class="dropdown">
+                                <button onclick="showFilters()" class="dropbtn">Location</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="/">Clear Filter</a>
+                                    <a href="/filter1" onclick="filterData()">1 Nephi</a>
+                                    <a href="/filter2" onclick="filterData()">2 Nephi</a>
+                                </div>
+                            </div>
+                        </th>
+                        <th>Scripture</th>
+                        <th class="Edit">Edit</th>
+                    </tr>
+                </thead>
+            <% for(let i=0;  i < scripData.length; i++) {%>
+                <tr>
+                    <td> <i class='bx bx-x' onclick="deleteScripture(<%= scripData[i].bomID %>)" style="cursor: pointer;"></i></td>
+                    <td> <%= scripData[i].bomID %> </td>
+                    <td> <%= scripData[i].bomLocation %> </td>
+                    <td> <%= scripData[i].bomScripture %> </td>
+                    <td> <i class='bx bx-pencil' onclick="editScripture(<%= scripData[i].bomID %>)" style="cursor: pointer;"></i> </td>
+                </tr>
+            <% } %>
+            </table>
+            
+        </div>
+    </section>
+
+    <script>
+        //shows dropdown
+        function showFilters(){
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        //Filters by Scripture Location
+        function filterData() {
+
+            /* var elements = document.getElementById("myDropdown").getElementsByTagName("a");
+            console.log(elements);
+            var  tagNames = [];
+
+            for (let i = 0; i < elements.length; i++) {
+                var current = elements[i];
+                tagNames.push(current.textContent);
+            } */
+            
+
+        }
+        //closes out of dropdown
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        //delete and edit functions
+        function deleteScripture(bomID){
+                var yesOrNo= confirm("You are about to delete this record");
+                if (yesOrNo === true)
+                {
+                    console.log("executed");
+                    window.location.href = "/deleteScripture/" + bomID
+                }
+                else {
+                console.log("not executed");
+                }
+                
+        }
+        function editScripture(bomID){
+                window.location.href = "/editScripture/" + bomID
+        }
+
+        //menu bar
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+
+        toggle.addEventListener("click" , () =>{
+            sidebar.classList.toggle("close");
+        })
+
+        searchBtn.addEventListener("click" , () =>{
+            sidebar.classList.remove("close");
+        })
+
+        modeSwitch.addEventListener("click" , () =>{
+            body.classList.toggle("dark");
+            
+            if(body.classList.contains("dark")){
+                modeText.innerText = "Light mode";
+            }else{
+                modeText.innerText = "Dark mode";
+                
+            }
+        });
+    </script>
+
+</body>
+</html>
