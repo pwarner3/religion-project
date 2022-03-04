@@ -1,5 +1,6 @@
 # religion-project
 This is a Project I developed for a religion class at BYU as well as for personal use. 
+
 ***It is written in NodeJs using EJS as well as CSS and Javascript functionalities.  
 Utilizes packages such as knex for database connection to Postgres***
 
