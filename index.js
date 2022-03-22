@@ -124,3 +124,13 @@ app.get("/filter2", (req,res) => { knex('BookOfMormon') //filter based on script
     });
 
 });
+app.get("/filter3", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Jacob%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
