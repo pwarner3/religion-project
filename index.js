@@ -134,3 +134,36 @@ app.get("/filter3", (req,res) => { knex('BookOfMormon') //filter based on script
     });
 
 });
+
+app.get("/filter4", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Mosiah%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
+
+app.get("/filter5", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Alma%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
+
+app.get("/filter6", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Helaman%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
