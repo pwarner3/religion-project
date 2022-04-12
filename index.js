@@ -189,3 +189,36 @@ app.get("/filter8", (req,res) => { knex('BookOfMormon') //filter based on script
     });
 
 });
+
+app.get("/filter9", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Mormon%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
+
+app.get("/filter10", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Ether%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
+
+app.get("/filter11", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%Moroni%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
