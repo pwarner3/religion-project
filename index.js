@@ -167,3 +167,25 @@ app.get("/filter6", (req,res) => { knex('BookOfMormon') //filter based on script
     });
 
 });
+
+app.get("/filter7", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%3 Nephi%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
+
+app.get("/filter8", (req,res) => { knex('BookOfMormon') //filter based on scripture location
+  .where('bomLocation','like', `%4 Nephi%`).orderBy('bomID')
+  .then(scripInfo=> {
+    res.render("index",{scripData: scripInfo});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+
+});
