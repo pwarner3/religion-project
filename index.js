@@ -26,7 +26,33 @@ let knex = require("knex")({
 
 app.listen(port, () => {console.log("Listener active on port ");});
 
-var authUser = true;//to start on login page
+var authUser = false;//to start on login page
+
+app.get("/login", function(req,res) //login page
+{ 
+    res.render("login")
+});
+
+app.post("/login",function(req,res) {//login post
+    knex('User').where("userID",req.body.userID)
+    .andWhere('userPassword',req.body.userPassword)
+    .then(results => {
+        if(results.length > 0) {
+            console.log("User is Authorized");
+            authUser = true;
+            res.redirect("/")
+        } else {
+            res.redirect("/login")
+        }
+    });
+});
+
+
+app.post("/logout", function(req,res) //logs user out
+{ 
+    authUser = false;
+    res.redirect("/login") 
+});
 
 app.get("/", function(req,res) //landing page
 { 
