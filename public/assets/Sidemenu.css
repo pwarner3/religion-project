@@ -504,3 +504,12 @@ body.dark .dropbtn:hover, body.dark .addScriptures input[type=submit]:hover {
 
 .show {display:block;}
 
+
+
+/* ====== Login Page ====== */
+
+.container-login {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
