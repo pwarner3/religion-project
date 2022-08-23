@@ -48,7 +48,7 @@ app.post("/login",function(req,res) {//login post
 });
 
 
-app.post("/logout", function(req,res) //logs user out
+app.get("/logout", function(req,res) //logs user out
 { 
     authUser = false;
     res.redirect("/login") 
