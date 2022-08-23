@@ -187,7 +187,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a{
+.sidebar li a, .sidebar li form{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -251,6 +251,7 @@ body.dark .mode .sun-moon i.moon{
     border: none;
     transition: var(--tran-03);
     width: 100%;
+    background-color: var(--sidebar-color);
 }
 
 .menu-bar .bottom-content .logout button:hover {
@@ -634,8 +635,10 @@ select:-webkit-autofill:hover {
     color: rgba(255, 255, 255, 0.892);
     transition: var(--tran-04); */
     -webkit-text-fill-color: rgba(255, 255, 255, 0.892);
+    -webkit-box-shadow: 0 0 0 1000px #919db5 inset !important;
     border: none;
     transition: var(--tran-04);
+    -webkit-text-size-adjust: 18px;
 }
 
 .container-login input:-webkit-autofill:focus,
@@ -646,4 +649,6 @@ select:-webkit-autofill:focus{
     -webkit-box-shadow: .5px .5px 4px #555 inset;
     -webkit-transition: var(--tran-04);
     transition: var(--tran-04);
+    -webkit-text-size-adjust: 18px;
+
 }
