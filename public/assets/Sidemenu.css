@@ -253,6 +253,12 @@ body.dark .mode .sun-moon i.moon{
     width: 100%;
 }
 
+.menu-bar .bottom-content .logout button:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+}
+
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
