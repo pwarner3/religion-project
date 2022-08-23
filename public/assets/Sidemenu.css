@@ -187,7 +187,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a, .sidebar li form button {
+.sidebar li a, .sidebar li form, .sidebar li form button {
     list-style: none;
     height: 100%;
     background-color: transparent;
