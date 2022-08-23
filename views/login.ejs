@@ -11,16 +11,30 @@
     <title>Login Page</title>
 </head>
 <body>
-    <h1>User Login</h1>
-    <div class="container-login">
-        <form method= "POST" action="/login">
-            <label for="userID">User ID</label>
-            <input type="text" id="userID" name="userID"><br>
-            <label for="userPassword">User Password</label>
-            <input type="password" id="userPassword" name="userPassword"><br>
-            <input type="submit" value="Login">
-        </form>
+    <div class="cotainer-login-parent">
+        <div class="container-login">
+            <div class="login-heading">
+                <h1>User Login</h1>
+            </div>
+            <form method= "POST" action="/login">
+                <div class="login-row-1">
+                    <label for="userID">User ID</label>
+                    <input type="text" id="userID" name="userID" placeholder="Username" autocomplete="off">
+                </div>
+                <div class="login-row-2">
+                    <label for="userPassword">User Password</label>
+                    <input type="password" id="userPassword" name="userPassword" placeholder="Password">
+                </div>
+                <div class="submit-login">
+                    <input type="submit" value="Login">
+                </div>
+                
+            </form>
+            <div class="guest-user">
+                <a href="https://www.google.com/">Guest User</a>
+            </div>
+        </div>
     </div>
-    
+
 </body>
 </html>
