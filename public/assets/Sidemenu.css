@@ -246,6 +246,12 @@ body.dark .mode .sun-moon i.sun{
 body.dark .mode .sun-moon i.moon{
     opacity: 0;
 }
+.menu-bar .bottom-content .logout,  
+.menu-bar .bottom-content .logout button {
+    border: none;
+    transition: var(--tran-03);
+    width: 100%;
+}
 
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
@@ -609,18 +615,29 @@ body.dark .dropbtn:hover, body.dark .addScriptures input[type=submit]:hover {
 }
 /* Webkit Autofill Style */
 .container-login input:-webkit-autofill,
-.container-login input:-webkit-autofill:hover {
-    padding: 7px 70px 7px 3px;
+.container-login input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:hover {
+    /* padding: 7px 70px 7px 3px;
     width: 100%;
     font-size: 18px;
     background-color: #919db5;
-    border: none;
+    
     color: rgba(255, 255, 255, 0.892);
+    transition: var(--tran-04); */
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.892);
+    border: none;
     transition: var(--tran-04);
 }
 
-.container-login input:-webkit-autofill:focus {
+.container-login input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus{
     outline: none;
     box-shadow: .5px .5px 4px #555 inset;
+    -webkit-box-shadow: .5px .5px 4px #555 inset;
+    -webkit-transition: var(--tran-04);
     transition: var(--tran-04);
 }
