@@ -48,10 +48,10 @@ app.post("/login",function(req,res) {//login post
 });
 
 
-app.get("/logout", function(req,res) //logs user out
+app.post("/logout", function(req,res) //logs user out
 { 
     authUser = false;
-    res.redirect("/login") 
+    res.render("/login") 
 });
 
 app.get("/", function(req,res) //landing page
