@@ -187,7 +187,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a, .sidebar li form{
+.sidebar li a, .sidebar li form {
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -222,7 +222,7 @@ body.dark .sidebar li a:hover .text{
 .menu-bar::-webkit-scrollbar{
     display: none;
 }
-.sidebar .menu-bar .mode{
+.sidebar .menu-bar .mode, .sidebar .menu-bar .logout{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
@@ -246,7 +246,7 @@ body.dark .mode .sun-moon i.sun{
 body.dark .mode .sun-moon i.moon{
     opacity: 0;
 }
-.menu-bar .bottom-content .logout,  
+ 
 .menu-bar .bottom-content .logout button {
     border: none;
     transition: var(--tran-03);
