@@ -508,8 +508,102 @@ body.dark .dropbtn:hover, body.dark .addScriptures input[type=submit]:hover {
 
 /* ====== Login Page ====== */
 
-.container-login {
+.cotainer-login-parent {
     display: flex;
     justify-content: center;
+    text-align: left;
+    padding: 200px 0px;
+    width: 100%;
+    background-color: rgb(230, 233, 246);
+    overflow: hidden;
+}
+
+.container-login {
+    padding: 20px 50px;
+    display: inline-block;
+    background: #919db5;
+    width: 380px;
+
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 10px 10px 15px var(--text-color);
+}
+.login-heading h1 {
+
+    border: 0;
+    padding: 10px 35px;
+    transition: 0.4s;
     text-align: center;
+    color: var(--primary-color);
+    border-bottom: 3PX solid var(--primary-color);
+}
+.container-login input[type="submit"]  {
+    padding: 5px 50px;
+    border: none;
+    transition: var(--tran-03);
+    width: 70%;
+    border-radius: 30px;
+    font-size: 18px;
+    color: var(--primary-color);
+    background-color: var(--sidebar-color);
+}
+.container-login input[type="submit"]:hover  {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--tran-03);
+    color: var(--sidebar-color);
+}
+.container-login label {
+   padding-right: 50px;
+   color: var(--primary-color);
+   font-size: 20px;
+}
+.container-login input[type="text"] {
+    padding: 7px 70px 7px 3px;
+    width: 100%;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.892);
+    background-color: #919db5;
+    border: none;
+    transition: var(--tran-04);
+}
+.container-login input[type="password"] {
+    padding: 7px 70px 7px 3px;
+    width: 100%;
+    font-size: 18px;
+    background-color: #919db5;
+    border: none;
+    color: rgba(255, 255, 255, 0.892);
+    transition: var(--tran-04);
+}
+.container-login input[type="text"]:focus, 
+.container-login input[type="password"]:focus {
+    outline: none;
+    box-shadow: .5px .5px 4px #555 inset;
+    transition: var(--tran-04);
+}
+.container-login input[type="text"]::placeholder, 
+.container-login input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.892);
+}
+.submit-login {
+    text-align: center;
+   align-self: flex-end;
+   padding: 80px 0px 20px;
+}
+.login-row-1 {
+    padding: 50px 0px 0px;
+    text-align: left;
+}
+.login-row-2 {
+    padding: 25px 0px 0px;
+    text-align: left;
+}
+.guest-user a {
+    color: var(--primary-color);
+    transition: var(--tran-03);
+}
+.guest-user a:hover {
+    color: #0e2b61;
+    transition: var(--tran-03);
 }
