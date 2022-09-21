@@ -26,6 +26,7 @@ let knex = require("knex")({
 
 app.listen(port, () => {console.log("Listener active on port ");});
 
+var guestUser = false;//to start
 var authUser = false;//to start on login page
 
 app.get("/login", function(req,res) //login page
@@ -47,11 +48,16 @@ app.post("/login",function(req,res) {//login post
     });
 });
 
+app.get("/guest", function(req,res){
+    guestUser = true
+    res.redirect("/")
+});
+
 
 app.post("/logout", function(req,res) //logs user out
 { 
     
-    if (authUser) {
+    if ((authUser) || (guestUser)) {
         authUser = false;
         res.redirect("/login");
     } else {
@@ -62,7 +68,7 @@ app.post("/logout", function(req,res) //logs user out
 
 app.get("/", function(req,res) //landing page
 { 
-    if(authUser === true){
+    if((authUser === true) || (guestUser  === true)) {
         knex('BookOfMormon').orderBy('bomID')//ordering
             .then(scripInfo=> {
                 res.render("index",{scripData: scripInfo});
@@ -76,7 +82,7 @@ app.get("/", function(req,res) //landing page
 });
 
 app.get("/addItems",(req,res) => {//display add page (read)
-    if(authUser === true){
+    if ((authUser === true) || (guestUser === true)) {
         res.render("addItems");
         } else {
             res.redirect("/login");
@@ -88,7 +94,11 @@ app.post("/addItems",(req,res) => {//write to Scripture data (create)
         .then(addResults => {
             res.redirect('/'); //change to Display Home Page when done
         });
-    } else {
+    }
+    if (guestUser) {
+        alert("You do not have access to add items")
+    } 
+    else {
         res.redirect("/login");
     }
 });
@@ -101,20 +111,28 @@ app.get("/deleteScripture/:bomID",(req,res) => {//deletes record from table
             console.log(err);
             res.status(500).json({err});
         });
-    } else {
+    }
+    if (guestUser) {
+        alert("You do not have access to delete")
+    }
+    else {
         res.redirect("/login");
     }
 });
 
 app.get("/editScripture/:bomID",(req,res) => {//displays edit page
-    if(authUser === true){ knex('BookOfMormon').where('bomID',req.params.bomID)
+    if(authUser === true) { knex('BookOfMormon').where('bomID',req.params.bomID)
         .then(bomInfo => {
             res.render('editScripture',{scripData: bomInfo});
         }).catch(err => { 
             console.log(err);
             res.status(500).json({err});
         });
-    } else {
+    } 
+    if (guestUser) {
+        alert("You do not have access to edit")
+    }
+    else {
         res.redirect("/login");
     }
 });
